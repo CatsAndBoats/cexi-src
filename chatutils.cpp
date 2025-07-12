@@ -72,7 +72,7 @@ namespace chatutils
         const uint16_t    zoneId  = PChar ? PChar->getZone() : 0;
         const std::string escaped = escapeJson(rawMessage);
 
-        ShowDebug("ChatLogger [CHAT]: [%s] %s\n", name.c_str(), rawMessage);
+        // ShowDebug("ChatLogger [CHAT]: [%s] %s\n", name.c_str(), rawMessage);
 
         std::ostringstream json;
         json << "{"
