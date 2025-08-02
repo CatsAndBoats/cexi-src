@@ -1,10 +1,36 @@
 ﻿#include "chatutils.h"
 #include "entities/charentity.h"
+#include "packets/c2s/0x0b5_chat_std.h"
 #include <iomanip>
 #include <mutex>
 #include <sstream>
 #include <string>
 #include <zmq.hpp>
+
+uint8_t chatutils::ChatKindToMessageType(GP_CLI_COMMAND_CHAT_STD_KIND kind)
+{
+    switch (kind)
+    {
+        case GP_CLI_COMMAND_CHAT_STD_KIND::Say:
+            return MESSAGE_SAY;
+        case GP_CLI_COMMAND_CHAT_STD_KIND::Shout:
+            return MESSAGE_SHOUT;
+        case GP_CLI_COMMAND_CHAT_STD_KIND::Yell:
+            return MESSAGE_YELL;
+        case GP_CLI_COMMAND_CHAT_STD_KIND::Party:
+            return MESSAGE_PARTY;
+        case GP_CLI_COMMAND_CHAT_STD_KIND::Linkshell1:
+            return MESSAGE_LINKSHELL;
+        case GP_CLI_COMMAND_CHAT_STD_KIND::Linkshell2:
+            return MESSAGE_LINKSHELL2;
+        case GP_CLI_COMMAND_CHAT_STD_KIND::Unity:
+            return MESSAGE_UNITY;
+        case GP_CLI_COMMAND_CHAT_STD_KIND::Emote:
+            return MESSAGE_EMOTION;
+        default:
+            return MESSAGE_SYSTEM_1;
+    }
+}
 
 namespace chatutils
 {
