@@ -41,8 +41,8 @@ namespace chatutils
     {
         try
         {
-            socket.bind("tcp://*:5556");
-            ShowInfo("ChatLogger ZMQ: Bound to tcp://*:5556\n");
+            socket.connect("tcp://127.0.0.1:5556");
+            ShowInfo("ChatLogger ZMQ: Bound to tcp://127.0.0.1:5556\n");
         }
         catch (const zmq::error_t& e)
         {
